@@ -97,32 +97,6 @@ function edit_topic_disp($t) {
 <?php
 }
 
-function default_topic_disp() {
-?>
-	<div class="wrap nosubsub">
-		<div id="icon-edit" class=icon32><br></div>
-		<h2>Topics</h2>
-		<?php global $toptopics; echo $toptopics['1'];?>
-		<form class="search-form" action="" method="get">
-			<input type="hidden" name="taxonomy" value="category">
-			<input type="hidden" name="post_type" value="post">
-			<p class="search-box"><label class="screen-reader-text" for="tag-search-input">Search Topics:</label>
-			<input type="search" id="tag-search-input" name="s" value="">
-			<input type="submit" name="" id="search-submit" class="button" value="Search Categories"></p>
-		</form>
-		<br class="clear">
-		<div id="col-container">
-			<div id="col-right">
-				<?php col_right_disp("topic");?>
-			</div>
-			<div id="col-left">
-				<h3>Add New Subtopic</h3>
-				<?php topic_col_left_disp();?>
-			</div>
-		</div>
-	</div>
-<?php
-}
 function topic_setting_disp($topic_table, $filter_cat='') {
 /**
 * Display topic setting page
@@ -848,18 +822,18 @@ function check_checkbox_php($prefixID, $checked){
 		  </script>';
 }
 
-function cnpolitics_show_extra_profile_fields( $user ) { ?>
+function cnpolitics_show_extra_profile_fields( $user ) {
 /**
 * HTML, display the extra_profile_fields
 */
-	<h3>Extra profile information</h3>
+?>
 	<table class="form-table">
 		<tr>
 			<th><label for="Title">Title</label></th>
 			<td>
-				<input type="text" name="title" id="title" value="<?php echo esc_attr( get_the_author_meta( 'title', $user->ID ) ); ?>" class="regular-text" /><br />
+				<input type="text" name="title" id="title" value="<?php echo esc_attr( get_the_author_meta( 'cnpolitics_title', $user->ID ) ); ?>" class="regular-text" /><br />
 				<span class="description">Please enter your Title in CNPolitics.</span>
 			</td>
 		</tr>
 	</table>
-<?php }
+<?php } ?>

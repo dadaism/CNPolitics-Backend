@@ -18,6 +18,8 @@ require_once('config.php');
 require_once('view.php');
 require_once('model.php');
 
+require_once('author-avatar.php');
+
 add_action( 'admin_menu', 'CNPolitics_add_submenu' );
 add_action( 'submitpost_box', 'CNPolitics_add_box');
 add_action( 'save_post', 'CNPolitics_save_post');
@@ -460,7 +462,7 @@ function cnpolitics_save_extra_profile_fields( $user_id ) {
 */
 	if ( !current_user_can( 'edit_user', $user_id ) )
 		return false;
-	update_usermeta( $user_id, 'title', $_POST['title'] );
+	update_usermeta( $user_id, 'cnpolitics_title', $_POST['title'] );
 }
 
 ?>

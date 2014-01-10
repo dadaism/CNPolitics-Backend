@@ -24,7 +24,11 @@ $sexes = array(
 	'2' => '女'
 	);
 
+$cnpolitics_url = get_site_url();
+//$cnpolitics_url = get_bloginfo('url');
 $cnpolitics_dir =  get_template_directory();
+$cnpolitics_theme_dir =  get_template_directory();
+$cnpolitics_theme_uri = get_template_directory_uri();
 
 $topic_image_dir = "/upload/topics/";
 $rsch_image_dir = "/upload/researchers/";
@@ -35,4 +39,5 @@ $sns_weibo_url = "http://weibo.com/cnpolitics";
 $sns_tencent_url = "http://t.qq.com/chinapolitics";
 $sns_163_url = "http://t.163.com/cnpolitics";
 
+//$category_display = array( 0,1,1,1,0,1,1,1,0);
 ?>
