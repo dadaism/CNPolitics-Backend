@@ -8,8 +8,6 @@ Author: Da Li
 Author URI: http://www.danielbit.com
 License: GPL2
 */
-?>
-<?php
 
 //error_reporting(E_ALL);
 //ini_set('display_errors',1);
@@ -59,20 +57,19 @@ function CNPolitics_add_script() {
 	wp_enqueue_script( 'CNPolitics-script');
 }
 
-function CNPolitics_add_box () {
 /**
 * Add select box to post edit page
 */
+function CNPolitics_add_box () {
 	add_meta_box('choose-topic', 'Topics', 'topics_box', 'post', 'side', 'default');
 	add_meta_box('choose-researcher', 'Researchers', 'researchers_box', 'post', 'side', 'default');
 	add_meta_box('choose-issue', 'Special Issues', 'issues_box', 'post', 'side', 'default');
-
 }
 
-function CNPolitics_topics_setting() {
 /**
 * state machine to control topics setting
 */
+function CNPolitics_topics_setting() {
 	global $wpdb;
 	if ( isset($_GET['position']) ) {
 		$toward = $_GET['toward'];
@@ -208,12 +205,12 @@ function CNPolitics_topics_setting() {
 		$topic_table = get_topic_table();
 		topic_setting_disp($topic_table);
 	}
-}
+}	
 
-function CNPolitics_researchers_setting() {
 /**
 * state machine to control researchers setting
 */
+function CNPolitics_researchers_setting() {
 	global $wpdb;
 	if ( isset($_GET['position']) ) {
 		$toward = $_GET['toward'];
@@ -352,10 +349,10 @@ function CNPolitics_researchers_setting() {
 	}
 }
 
-function CNPolitics_issues_setting() {
 /**
 * state machine to control issues setting
 */
+function CNPolitics_issues_setting() {
 	global $wpdb;
 	if ( isset($_GET['position']) ) {
 		$toward = $_GET['toward'];
@@ -431,35 +428,35 @@ function CNPolitics_issues_setting() {
 	}
 }
 
-function cnpolitics_create_meta_box() {
 /**
 * Create meta box for subtitle
 */
+function cnpolitics_create_meta_box() {
 	add_meta_box( 'post-subtitle', 'Subtitle', 'subtitle_box', 'post', 'normal', 'high' );
 }
 
-function subtitle_box( $post ) {
 /**
 * HTML for subtitle box
 */
+function subtitle_box( $post ) {
 	$subtitle = get_post_meta( $post->ID, 'cnpolitics_subtitle', true );
 	echo '	<input style="width:100%;" type="text" name="post-subtitle" value="'.esc_attr($subtitle).'">';
 }
 
-function cnpolitics_save_meta_box( $post_id ) {
 /**
 * Save subtitle
 */
+function cnpolitics_save_meta_box( $post_id ) {
 	if ( isset( $_POST['post-subtitle'] ) ) {
 		update_post_meta( $post_id, 'cnpolitics_subtitle', strip_tags( $_POST['post-subtitle'] ) );
 	}
 }
 
-function cnpolitics_save_extra_profile_fields( $user_id ) {
 /**
 * Save extra profile fields when update user information
 * @param int $user_id user id
 */
+function cnpolitics_save_extra_profile_fields( $user_id ) {
 	if ( !current_user_can( 'edit_user', $user_id ) )
 		return false;
 	update_usermeta( $user_id, 'cnpolitics_title', $_POST['title'] );

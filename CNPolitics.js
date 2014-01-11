@@ -1,5 +1,5 @@
 jQuery(document).ready( function($) {
-	//   var newCat, noSyncChecks = false, syncChecks, catAddAfter;
+	// var newCat, noSyncChecks = false, syncChecks, catAddAfter;
 	// $('#link_name').focus();
     // postboxes
 	// postboxes.add_postbox_toggles('link');
@@ -9,10 +9,10 @@ jQuery(document).ready( function($) {
         $(this).parent().addClass('tabs').siblings('li').removeClass('tabs');
         $('#taxonomy-topic').children('.tabs-panel').hide();
         $(t).show();
-       // if ( '#categories-all' == t )
-         //   deleteUserSetting('cats');
-       // else
-         //   setUserSetting('cats','pop');
+       	// if ( '#categories-all' == t )
+        //   deleteUserSetting('cats');
+       	// else
+        //   setUserSetting('cats','pop');
         return false;
     });
     $('#rsch-tabs a').click(function(){
@@ -20,28 +20,15 @@ jQuery(document).ready( function($) {
         $(this).parent().addClass('tabs').siblings('li').removeClass('tabs');
         $('#taxonomy-rsch').children('.tabs-panel').hide();
         $(t).show();
-       // if ( '#categories-all' == t )
-         //   deleteUserSetting('cats');
-       // else
-         //   setUserSetting('cats','pop');
-        return false;
-    });
-    $('#test-tabs a').click(function(){
-        var t = $(this).attr('href');
-        $(this).parent().addClass('tabs').siblings('li').removeClass('tabs');
-        //$('.tabs-panel').hide();
-        $('#taxonomy-test').children('.tabs-panel').hide();
-        $(t).show();
-       // if ( '#categories-all' == t )
-         //   deleteUserSetting('cats');
-       // else
-         //   setUserSetting('cats','pop');
+       	// if ( '#categories-all' == t )
+        //   deleteUserSetting('cats');
+       	// else
+        //   setUserSetting('cats','pop');
         return false;
     });
 });
 
 function showtab(tabAreaId, tabId, taxonomyId, divId) {
-
 /*
 * @para tabAreaId: tab area
 * @para tabId: tab list
@@ -96,4 +83,104 @@ function check_checkbox( prefixID, arrayID ) {
 		//alert("topicid-"+arrayID[i]);    //no .value here
 		document.getElementById(prefixID+arrayID[i]).checked = true;
 	}
+}
+
+function decorate_filter_box(issue, authorname, quarter) {
+/**
+* @para issue tab area
+* @para authorname
+* @para quarter
+*/
+	//alert(authorname);
+	//alert(quarter);
+	//alert( $('.filter-list li').text() );
+	//document.getElementsById("author-all-a");
+	var issues = document.getElementsByClassName("issue-all-a");
+	issues[0].style.color = '#b42800';
+	issues[0].style.fontWeight = 'bold';
+	if (issue) {
+		$(".topic-filter").slideDown();
+		$(".collapse-topic-filter").hide();
+		$(".expand-topic-filter").show();
+		
+		issues = document.getElementsByClassName("issue-all-a");
+		issues[0].style.color = '#777';
+		issues[0].style.fontWeight = '';
+		//document.getElementsById("author-all-a")[0].style.fontWeight = '';
+		var issues = document.getElementsByClassName("issue-filter-a");
+		for (var i=0; i<issues.length; ++i) {
+			//alert(authors[i].innerHTML);
+		
+			if ( issues[i].innerHTML == issue ){
+				//alert(authors[i].innerHTML);
+				issues[i].style.color = '#b42800'; 
+				issues[i].style.fontWeight = 'bold';
+			}
+			else {
+				issues[i].style.color = '#777'; 
+				issues[i].style.fontWeight = '';
+			}
+		}
+	}
+	
+	var authors = document.getElementsByClassName("author-all-a");
+	authors[0].style.color = '#b42800';
+	authors[0].style.fontWeight = 'bold';
+	if (authorname) {
+		$(".author-filter").slideDown();
+		$(".collapse-author-filter").hide();
+		$(".expand-author-filter").show();
+		
+		authors = document.getElementsByClassName("author-all-a");
+		authors[0].style.color = '#777';
+		authors[0].style.fontWeight = '';
+		//document.getElementsById("author-all-a")[0].style.fontWeight = '';
+		var authors = document.getElementsByClassName("author-filter-a");
+		for (var i=0; i<authors.length; ++i) {
+			//alert(authors[i].innerHTML);
+		
+			if ( authors[i].innerHTML == authorname ){
+				//alert(authors[i].innerHTML);
+				authors[i].style.color = '#b42800'; 
+				authors[i].style.fontWeight = 'bold';
+			}
+			else {
+				authors[i].style.color = '#777'; 
+				authors[i].style.fontWeight = '';
+			}
+		}
+	}
+	var quarters = document.getElementsByClassName("quarter-all-a");
+	quarters[0].style.color = '#b42800';
+	quarters[0].style.fontWeight = 'bold';
+	if (quarter) {
+		$(".quarter-filter").slideDown();
+		$(".expand-quarter-filter").hide();
+		$(".collapse-quarter-filter").show();
+	
+		quarters = document.getElementsByClassName("quarter-all-a");
+		quarters[0].style.color = '#777';
+		quarters[0].style.fontWeight = '';
+		//document.getElementsById("author-all-a")[0].style.fontWeight = '';
+		var quarters = document.getElementsByClassName("quarter-filter-a");
+		for (var i=0; i<quarters.length; ++i) {
+			//alert(authors[i].innerHTML);
+		
+			if ( quarters[i].innerHTML == quarter ){
+				//alert(authors[i].innerHTML);
+				quarters[i].style.color = '#b42800'; 
+				quarters[i].style.fontWeight = 'bold';
+			}
+			else {
+				quarters[i].style.color = '#777'; 
+				quarters[i].style.fontWeight = '';
+			}
+		}
+	}
+	
+	//alert( $('.filter-list li a'):contains("guisu").text() );
+}
+
+function copyToClipboard(text) {
+	window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
 }
